@@ -7,8 +7,9 @@ module.exports = {
 
 	// Output of the bundled file
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, '../build'), // This line is updated
 		filename: 'bundle.js',
+		publicPath: '/', // Ensure assets are served correctly on navigation
 	},
 
 	// Module rules for processing different types of files
@@ -51,7 +52,8 @@ module.exports = {
 
 	// Development Server Configuration
 	devServer: {
-		static: path.join(__dirname, 'dist'),
+		historyApiFallback: true, // This line is added for SPA routing
+		static: path.join(__dirname, '../build'), // Serve static files from the build directory
 		compress: true,
 		port: 3000,
 	},
